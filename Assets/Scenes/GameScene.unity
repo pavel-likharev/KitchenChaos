@@ -1641,6 +1641,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e6957a8114bf5384194607ac44d99871,
         type: 2}
+    - target: {fileID: 1445361743197561419, guid: e08c834f1a1d8b54d95b362421630b84,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445361743197561419, guid: e08c834f1a1d8b54d95b362421630b84,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 50aead1969a224749a9ba2c278fea174,
+        type: 2}
+    - target: {fileID: 1445361743197561419, guid: e08c834f1a1d8b54d95b362421630b84,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 50aead1969a224749a9ba2c278fea174,
+        type: 2}
     - target: {fileID: 4348186526859424567, guid: e08c834f1a1d8b54d95b362421630b84,
         type: 3}
       propertyPath: m_RootOrder
