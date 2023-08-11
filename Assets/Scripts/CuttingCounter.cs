@@ -26,12 +26,15 @@ public class CuttingCounter : BaseCounter
                 player.GetKitchenObject().SetKitchenObjectParent(this);
                 cuttingProgress = 0;
 
-                CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-
-                OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                if (HasRicipeWithInputKitchenObject(GetKitchenObject().GetKitchenObjectSO()))
                 {
-                    progressNormilized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
-                });
+                    CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+
+                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    {
+                        progressNormilized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
+                    });
+                }
             }
         }
         else
@@ -41,18 +44,12 @@ public class CuttingCounter : BaseCounter
             }
             else
             {
-                if (HasKitchenObject())
+
+                OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
                 {
-                    cuttingProgress = 0;
-
-                    CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
-                    {
-                        progressNormilized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
-                    });
-                }
-
+                    progressNormilized = 0
+                });
+                
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
