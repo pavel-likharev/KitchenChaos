@@ -3,15 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IHasProgress
 {
     public event EventHandler OnCut;
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-
-    public class OnProgressChangedEventArgs : EventArgs
-    {
-        public float progressNormilized;
-    }
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
     [SerializeField] CuttingRecipeSO[] cuttingRecipeSOArray;
 
@@ -30,7 +25,7 @@ public class CuttingCounter : BaseCounter
                 {
                     CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormilized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
                     });
@@ -45,7 +40,7 @@ public class CuttingCounter : BaseCounter
             else
             {
 
-                OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                 {
                     progressNormilized = 0
                 });
@@ -65,7 +60,7 @@ public class CuttingCounter : BaseCounter
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
-            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
             {
                 progressNormilized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
