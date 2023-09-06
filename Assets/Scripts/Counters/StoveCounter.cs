@@ -156,21 +156,6 @@ public class StoveCounter : BaseCounter, IHasProgress
         return fryingRecipeSO != null;
     }
 
-    private KitchenObjectSO GetOutputFromInput(KitchenObjectSO inputKitchenObjectSO)
-    {
-        FryingRecipeSO fryingRecipeSO = GetFryingRecipeSOWithInput(inputKitchenObjectSO);
-
-        if (fryingRecipeSO != null)
-        {
-            return fryingRecipeSO.output;
-        }
-        else
-        {
-            return null;
-        }
-
-    }
-
     private FryingRecipeSO GetFryingRecipeSOWithInput(KitchenObjectSO input)
     {
         foreach (FryingRecipeSO fryingRecipeSO in fryingRecipeSOArray)
