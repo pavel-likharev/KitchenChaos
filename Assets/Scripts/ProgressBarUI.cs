@@ -28,7 +28,6 @@ public class ProgressBarUI : MonoBehaviour
 
     private void HasProgress_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
-        Debug.Log(e.progressNormilized);
         barImage.fillAmount = e.progressNormilized;
 
         if (e.progressNormilized == 0f || e.progressNormilized == 1f)
@@ -43,13 +42,11 @@ public class ProgressBarUI : MonoBehaviour
 
     private void Hide()
     {
-        Debug.Log("hide");
         gameObject.SetActive(false);
     }
 
     private void Show()
     {
-        Debug.Log("show");
         gameObject.SetActive(true);
     }
 }
