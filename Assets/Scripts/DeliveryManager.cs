@@ -7,6 +7,8 @@ public class DeliveryManager : MonoBehaviour
 {
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
+    public event EventHandler OnRecipeSuccess;
+    public event EventHandler OnRecipeFailed;
 
     public static DeliveryManager Instance { get; private set; }
 
@@ -20,6 +22,7 @@ public class DeliveryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
         waitingRecipeSOList = new List<RecipeSO>();
     }
 
@@ -74,6 +77,7 @@ public class DeliveryManager : MonoBehaviour
                    
                     waitingRecipeSOList.RemoveAt(i);
                     OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+                    OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
                     return;
                 }
             }
@@ -81,6 +85,7 @@ public class DeliveryManager : MonoBehaviour
         }
 
         //Debug.Log("Player delivered the INcorrect recipe");
+        OnRecipeFailed?.Invoke(this, EventArgs.Empty);
     }
 
     public List<RecipeSO> GetWaitingRecipeListSO()
