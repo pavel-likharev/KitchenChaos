@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     public event EventHandler OnPickedSomething;
     public event EventHandler OnDropedSomething;
+
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
